@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+font-size: clamp(1px, calc(100vw / 500 * 20), 20px);
+background-color: black;
+
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  color: white;
+}
+
+/* 콘텐츠 중앙 고정 프레임 */
+.frame {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  background-color: black;
+}
+
+
+
+/* 배경, 콘텐츠 분리 */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 393 / 1785; /* 이미지 원본 비율 유지 */
+  max-width: 100%;
+  background-image: url('assets/image/img-background-outside.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* 상단 로고 */
+.logo-header {
+  text-align: center;
+  position: sticky;
+  top: 5rem;
+  z-index: 10;
+}
+
+.logo {
+  width: min(70vw, 303px);
+  max-height: 266px;
+  height: auto;  
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInTop 1s ease-out forwards;
+}
+
+@keyframes fadeInTop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 히어로 섹션 */
+.hero-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+  pointer-events: none; /* 클릭 방지, 필요하면 제거 */
+}
+
+
+.hero-image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+
+
+/* 설명 텍스트 */
+.description {
+  margin-top: 40rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-in-start {
+  animation: fadeInText 0.8s ease-out forwards;
+}
+
+.delay-1.fade-in-start { animation-delay: 0.1s; }
+.delay-2.fade-in-start { animation-delay: 0.3s; }
+.delay-3.fade-in-start { animation-delay: 0.5s; }
+.delay-4.fade-in-start { animation-delay: 0.7s; }
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* 버튼 섹션 */
+.button-section {
+  text-align: center;
+  margin-bottom: 10rem;
+}
+
+#start-btn {
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0.5rem 5rem;
+  border-radius: 3rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgb(255, 255, 255);
+  border: 1px solid white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+#start-btn.clicked {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(255, 255, 255);
+}
+
+/* 링크복사 & 공유 버튼 */
+.index-share {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.index-share button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.index-share img {
+width: 5rem; /* 최대 48px */
+}
+
+.index-share button:hover {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+.index-share-text{
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
