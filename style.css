@@ -2,61 +2,94 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
-font-size: clamp(1px, calc(100vw / 500 * 20), 20px);
-background-color: black;
-
-}
-
-body {
   font-family: 'Noto Sans KR', sans-serif;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  color: white;
+  font-size: clamp(1px, calc(100vw / 500 * 20), 20px);
+  line-height: 1.5rem;
 }
 
-/* 콘텐츠 중앙 고정 프레임 */
+/* 뷰포트 전체, 사용자 뷰포트가 frame의 최대 너비(500px)보다 넓어지면 검정배경*/
+body {
+  min-height: 100vh;
+  margin:0;
+  padding: 0;
+  color: white;
+  background-color: black;
+  border: 5px solid rgb(0, 255, 64);
+}
+
+/* 스크롤o 중앙 프레임*/
 .frame {
   position: relative;
-  width: 100%;
-  max-width: 500px;
+  margin: 0 auto;
+
+  width: 100%; /*사용자 뷰포트에 꽉차게*/
+  max-width: 500px;   /*사용자 뷰포트가 500px보다 큰 경에는 최대 너비 500px로 고정*/
+  height: 100vh;
+  
+  background-color: rgb(25,46,71);
+  border: 10px solid rgb(85, 0, 255);
+}
+
+/* index.html 전용 */
+.page-index .frame {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;        /* IE/Edge */
+}
+
+/* intro.html 전용 */
+.page-intro .frame {
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: center;  /*가로정렬*/
+  align-items: center;      /*세로정렬*/
+  
   overflow: hidden;
-  background-color: black;
+}
+
+/* test.html 전용 */
+.page-test .frame {
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: center;  /*가로정렬*/
+  align-items: center;      /*세로정렬*/
+  
+  overflow: hidden;
 }
 
 
 
-/* 배경, 콘텐츠 분리 */
+/* 배경 이미지 삽입 */
 .background-image {
+  /* 위치 */
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 393 / 1785; /* 이미지 원본 비율 유지 */
+  
+  /* 크기 */
+  width: 100%; /*frame 너비에 꽉차게(background-image div가 frame div 하위에 있으므로)*/
   max-width: 100%;
-  background-image: url('assets/image/img-background-outside.png');
-  background-size: contain;
+  aspect-ratio: 393 / 1785; /* 이미지 원본 비율 유지 */
+  
+  /* 이미지 */
+  background-image: url('assets/image/img-background-outside.png'); 
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: top center; 
+  background-size: cover;
+  
   z-index: 0;
 }
-
-.content {
-  position: relative;
-  z-index: 1;
-}
-
 
 /* 상단 로고 */
 .logo-header {
   text-align: center;
-  position: sticky;
+  position: relative;
   top: 5rem;
   z-index: 10;
 }
@@ -100,12 +133,17 @@ body {
 
 
 /* 설명 텍스트 */
-.description {
-  margin-top: 40rem;
+.description-section {
+  font-size:0.9rem;
+
+  margin-top: 37rem;
+  padding:1.5rem;
+
   text-align: center;
-  display: flex;
   flex-direction: column;
-  gap: 2rem;
+  
+  z-index: 10;
+
 }
 
 .fade-in {
@@ -132,25 +170,35 @@ body {
 
 /* 버튼 섹션 */
 .button-section {
+  /* 위치 */
+  position: relative;
+  margin: 5rem 0rem;
+  z-index: 10;
+
+  /* 내부 요소 정렬 */
   text-align: center;
-  margin-bottom: 10rem;
+  gap: 5rem;
 }
 
 #start-btn {
+  /* 폰트 스타일 */
   font-size: 1.25rem;
   font-weight: 600;
+  color: rgb(255, 255, 255);
+
+  /* 버튼 스타일 */
+  border: 1px solid white;
   padding: 0.5rem 5rem;
   border-radius: 3rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgb(255, 255, 255);
-  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  /* 애니메이션 */
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+
 }
 
-#start-btn.clicked {
+#start-btn:active {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   border: 1px solid rgb(255, 255, 255);
@@ -161,6 +209,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 5rem;
+  margin: 5rem 0rem;
 }
 
 .index-share button {
@@ -171,15 +220,326 @@ body {
 }
 
 .index-share img {
-width: 5rem; /* 최대 48px */
+  width: 5rem; 
 }
 
-.index-share button:hover {
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+.index-share button:active {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 .index-share-text{
   font-size: 1rem;
   color: white;
-  margin-bottom: 0.5rem;
 }
+
+
+/* intro 화면 */
+.background-image-inside{
+  /* 위치 */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* 크기 */
+  width: 100%; /*frame 너비에 꽉차게(background-image div가 frame div 하위에 있으므로)*/
+  max-width: 500px;
+  height:100vh;
+  aspect-ratio: 1080 / 1920; /* 이미지 원본 비율 유지 */
+
+  /* 이미지 파일 */
+  background-image: url('assets/image/img-background-inside.png'); 
+  background-repeat: no-repeat;
+  background-position: top center; 
+  background-size: cover;
+
+  z-index: 0;
+}
+
+
+/* 인트로 섹션 */
+.intro-section {
+  /* 위치 */
+  position:relative;
+  z-index: 10;
+
+  /* 크기 */
+  width: 90%;
+  padding: 2rem;
+  margin: auto;
+
+  /* 내부 요소 배열 */
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+
+  /* 박스 스타일 */
+  border: 1px solid white;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.intro-text{
+  flex-direction: column;
+  text-align: center;
+}
+
+
+
+/* 다음 버튼 */
+#next-btn {
+  /* 버튼 스타일 */
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+
+  /* 폰트 스타일 */
+  color: black;
+  font-size: 1.25rem;
+  font-weight:600;
+
+  /* 내부 정렬 */
+  padding: 0.6rem 1rem;
+
+  /* 애니메이션 */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#next-btn:active {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid white; 
+}
+
+
+/* test.html */
+.page-test .background-image-inside::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  
+  background-color: rgba(0, 0, 0, 0.5); /* 🔥 검정 반투명 오버레이 */
+  z-index: 1;
+}
+
+
+.progress-section {
+  /* border: 3px solid red; */
+
+  position: absolute;
+  top:0;
+  z-index: 10;
+
+  width:100%;
+  height:15%;
+
+  display: flex;  
+  justify-content: center;
+  align-items: end;
+}
+
+.progress-bar-bg {
+  width: 85%;
+  height: 0.25rem;
+  background: white;
+  border-radius: 1rem;
+
+  position: relative;
+  justify-content: center;
+}
+
+.progress-bar-bg::before,
+.progress-bar-bg::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 0.5rem;
+  height: 0.5rem;
+  
+  background: white;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.progress-bar-bg::before {
+  left: -0.25rem; /* 진행바 바깥쪽으로 반만 나오게 */
+}
+
+.progress-bar-bg::after {
+  right: -0.25rem;
+}
+
+.progress-bar-fill {
+  width: 0%;
+  height: 0.25rem;
+  background: #00ffe5;
+  border-radius: 3rem;
+
+  transition: width 0.3s;
+}
+
+.question-section {
+  /* border: 1px solid red; */
+
+  position: absolute;
+  top:15%;
+  z-index: 10;
+
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+  line-height: 1rem;
+  
+  width:100%;
+  height:45%;
+  padding-right: 2rem;
+  padding-left: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.answer-section {
+  /* border: 1px solid red;   */
+
+  position: absolute;
+  bottom:10%;
+  z-index: 10;
+
+  width:100%;
+  height: 20%;
+  margin:2rem auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+
+  /* 내부 배열 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* test 화면 전환 애니메이션 */
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.5s ease;
+  z-index: 100; /* 질문/선택지 위로 올라오게 */
+}
+
+/* question-section 등장 애니메이션 */
+.fade-line {
+  opacity: 0;
+  display: block;
+  transform: translateY(10px);
+  animation: fadeInLine 0.5s ease forwards;
+}
+
+@keyframes fadeInLine {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 순차 등장 딜레이 */
+.delay-0 { animation-delay: 0s; }
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+
+/* 필요시 더 추가 가능 */
+
+
+
+
+.choice-btn {
+  /* 크기, 위치 */
+  width:100%;
+  padding: 1rem 1.5rem;
+
+  /* 버튼 스타일 */
+  border-radius: 0.75rem;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.4);
+  
+  /* 글씨 스타일 */
+  font-family: 'Noto Sans KR', sans-serif; /* ✅ 명시 */
+  font-size: 1rem;
+  color: white;
+  font-size: 1rem;
+  
+  /* 애니메이션 */
+  cursor: pointer;
+  transition: all 0.2s;
+
+}
+
+.choice-btn:active {
+  background-color: white;
+  color: black;
+}
+
+/* 버튼 섹션 */
+.back-section {
+  /* border: 1px solid red; */
+
+  position: absolute;
+  bottom:0%;
+  z-index: 10;
+
+  width: 100%;
+  height: 10%;
+  padding-left: 1rem;    
+
+  /* 내부 요소 정렬 */
+  display: flex;
+  align-items: center;              
+  justify-content: flex-start;      
+}
+
+/* 뒤로가기 버튼*/
+#prev-btn {
+  /* 버튼 스타일 */
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 50%;
+
+  /* 폰트 스타일 */
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  font-weight:600;
+
+  /* 내부 정렬 */
+  padding: 0.6rem 1rem;
+
+  /* 애니메이션 */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#prev-btn:active {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid white; 
+}
+

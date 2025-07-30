@@ -6,48 +6,48 @@
   <title>비밀 편지 상점 - 소복</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="page-index">
   <div class="frame">
     <!-- 배경 이미지 -->
-    <div class="background-image"></div>
+    <div class="background-image"></div> <!--/background-->
 
     <!-- 실제 콘텐츠 -->
-    <div class="content">
-      <!-- 상단 고정 로고 -->
-      <header class="logo-header">
-        <img src="assets/image/logo.png" alt="소복 로고" class="logo fade-in-top"/>
-      </header>
-
-      <!-- 히어로 섹션 -->
-      <section class="hero-section" id="hero">
-        <img src="assets/image/img-hero-section.png" alt="스크롤 유도 이미지" class="hero-image" />
-      </section>
-
-      <!-- 설명 텍스트 -->
-      <section class="description">
-        <p class="fade-in delay-1">꿈 속을 헤매다 우연히 도착한 눈 내리는 숲<br>그 숲 어귀에 조용히 불이 켜진 오두막이 있다.</p>
-        <p class="fade-in delay-2">그 곳엔 언제나 따뜻한 차와, <br>편지를 기다리는 빈 종이 한 장이 준비돼 있다.</p>
-        <p class="fade-in delay-3"><em>‘오늘 하루는 어땠나요? <br>당신의 이야기를 들려주세요.’</em></p>
-        <p class="fade-in delay-4">반복되는 지루한 일상에 지친 당신을 맞아 주는<br>비밀 편지 상점, &lt;소복&gt;의 이야기</p>
-      </section>
-
-      <!-- 버튼 섹션 -->
-      <section class="button-section">
-        <button id="start-btn">시작하기</button>
-        <div class="index-share">
-          <button id="copy-btn">
-            <div class="index-share-text"> 링크 복사 </div>
-            <img src="assets/button/btn-link.png" alt="링크복사" />
-          </button>
-          <button id="share-btn">
-            <div class="index-share-text"> 공유하기 </div>
-            <img src="assets/button/btn-share.png" alt="공유하기" />
-          </button>
-        </div>
-      </section>
-    </div> <!-- /.content -->
+    <!-- 상단 고정 로고 -->
+    <header class="logo-header">
+      <img src="assets/image/logo.png" alt="소복 로고" class="logo fade-in-top"/>
+    </header>
+    
+    <!-- 히어로 섹션 -->
+    <section class="hero-section" id="hero">
+      <img src="assets/image/img-hero-section.png" alt="스크롤 유도 이미지" class="hero-image" />
+    </section>
+    
+    <!-- 설명 텍스트 섹션 -->
+    <section class="description-section">
+      <div class="hero-trigger"></div>         <!-- hero옵저버용 트리거 -->
+      <p class="fade-in delay-1">꿈 속을 헤매다 우연히 도착한 눈 내리는 숲<br>그 숲 어귀에 조용히 불이 켜진 오두막이 있다.</p>
+      <p class="fade-in delay-2">그 곳엔 언제나 따뜻한 차와, <br>편지를 기다리는 빈 종이 한 장이 준비돼 있다.</p>
+      <p class="fade-in delay-3"><em>‘오늘 하루는 어땠나요? <br>당신의 이야기를 들려주세요.’</em></p>
+      <p class="fade-in delay-4">반복되는 지루한 일상에 지친 당신을 맞아 주는<br>비밀 편지 상점, &lt;소복&gt;의 이야기</p>
+    </section>
+    
+    <!-- 버튼 섹션 -->
+    <section class="button-section">
+      <button id="start-btn">시작하기</button>
+      <div class="index-share">
+        <button id="copy-btn">
+          <div class="index-share-text"> 링크 복사 </div>
+          <img src="assets/button/btn-link.png" alt="링크복사" />
+        </button>
+        <button id="share-btn">
+          <div class="index-share-text"> 공유하기 </div>
+          <img src="assets/button/btn-share.png" alt="공유하기" />
+        </button>
+      </div>
+    </section>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script-common.js"></script>
+  <script src="script-index.js"></script>
 </body>
 </html>
