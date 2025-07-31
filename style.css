@@ -63,6 +63,23 @@ body {
   overflow: hidden;
 }
 
+/* 화면 전환 애니메이션 */
+.fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  z-index: 9999;
+  pointer-events: none;
+}
+
 
 
 /* 배경 이미지 삽입 */
@@ -159,6 +176,7 @@ body {
 .delay-2.fade-in-start { animation-delay: 0.3s; }
 .delay-3.fade-in-start { animation-delay: 0.5s; }
 .delay-4.fade-in-start { animation-delay: 0.7s; }
+
 
 @keyframes fadeInText {
   to {
@@ -431,21 +449,7 @@ body {
   gap: 1rem;
 }
 
-/* test 화면 전환 애니메이션 */
-.fade-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
 
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  opacity: 0;
-  pointer-events: none;
-
-  transition: opacity 0.5s ease;
-  z-index: 100; /* 질문/선택지 위로 올라오게 */
-}
 
 /* question-section 등장 애니메이션 */
 .fade-line {

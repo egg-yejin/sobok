@@ -26,3 +26,15 @@ if (shareBtn && navigator.share) {
     }
   });
 }
+
+// 페이지 진입 시 fade-in 처리
+window.addEventListener("DOMContentLoaded", () => {
+  const fadeOverlay = document.getElementById("fade-overlay");
+  if (fadeOverlay) {
+    fadeOverlay.style.opacity = "1"; // 시작은 어두운 상태
+    requestAnimationFrame(() => {
+      fadeOverlay.style.opacity = "0"; // 자동으로 밝아짐
+    });
+  }
+});
+

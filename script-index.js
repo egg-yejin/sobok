@@ -33,11 +33,16 @@ if (description && fadeIns.length > 0) {
 
 // 시작하기 버튼
 const startBtn = document.getElementById('start-btn');
+const fadeOverlay = document.getElementById('fade-overlay');
+
 if (startBtn) {
   startBtn.addEventListener('click', () => {
-    startBtn.classList.add('clicked');
-    setTimeout(() => {
-      window.location.href = 'intro.html';
-    }, 300);
+  fadeOverlay.style.opacity = '1';
+  fadeOverlay.addEventListener('transitionend', () => {
+    window.location.href = 'intro.html';
+  }, { once: true });
+
   });
 }
+
+
