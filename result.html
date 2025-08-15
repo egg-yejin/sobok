@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>비밀 편지 상점 - 소복</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-result">
+  <div class="frame">
+    <!-- 화면 전환용 오버레이 -->
+    <div class="fade-overlay" id="fade-overlay"></div>    
+    
+    <!-- 배경 이미지 -->
+    <div class="background-image-inside"></div>
+
+    <!-- 제목 섹션 -->
+    <section class="result-title-section">
+      <p class="result-title">당신의 편지 메이트는</p>
+    </section>
+
+    <!-- 캐릭터 섹션 -->
+    <section class="character-section">
+      <div class="character-name"></div>
+      <div class="character-img"></div>
+    </section>
+
+    <!-- 캐릭터 설명 섹션 -->
+    <section class="character-description-section">
+      <p class="character-description-main"></p>
+      <p class="character-description-detail"></p>
+    </section>
+
+    <!-- 버튼 섹션 -->
+    <section class="result-action-section">
+      <button id="select-btn"> 
+        <img src="assets/button/btn-link.png" alt="캐릭터 직접 고르기" />               
+        <div class="result-actions-text">메이트<br>직접 고르기</div>
+      </button>
+      <button id="send-btn">
+        <img src="assets/button/btn-link.png" alt="편지 쓰러 가기" />   
+        <div class="result-actions-text">편지<br>쓰러 가기</div>           
+      </button>
+    </section>
+
+
+
+  </div>
+  <script src="script-common.js"></script>
+  <script src="script-result.js"></script>
+</body>
